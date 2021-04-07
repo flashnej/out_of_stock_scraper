@@ -6,7 +6,7 @@ include SendGrid
 
 desc "This task is called by the Heroku scheduler add-on"
 task :update_feed => :environment do
-    html = HTTParty.get('https://shop.lululemon.com/p/men-shorts/Commission-Short-Classic-Warpstreme-9/_/prod9610182?color=31311&sz=28')
+    html = HTTParty.get('https://shop.lululemon.com/p/men-shorts/Commission-Short-Classic-Warpstreme-9/_/prod9610182?color=31311&sz=30')
     response = Nokogiri::XML(html)
     # # url = 'https://en.wikipedia.org/wiki/Recursion_(computer_science)'
     # page = Nokogiri::HTML(open(url))
