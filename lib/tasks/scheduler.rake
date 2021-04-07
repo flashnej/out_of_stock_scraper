@@ -1,5 +1,5 @@
 require 'nokogiri'
-require "HTTParty"
+require "httparty"
 require 'sendgrid-ruby'
 include SendGrid
 
