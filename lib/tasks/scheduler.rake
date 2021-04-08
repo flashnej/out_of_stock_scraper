@@ -6,7 +6,7 @@ include SendGrid
 
 desc "This task is called by the Heroku scheduler add-on"
 task :update_feed => :environment do
-    html = HTTParty.get('https://shop.lululemon.com/p/men-shorts/Commission-Short-Classic-Warpstreme-9/_/prod9610182?color=31311&sz=30')
+    html = HTTParty.get('https://shop.lululemon.com/p/men-shorts/Commission-Short-Classic-Warpstreme-9/_/prod9610182?color=31311&sz=28')
     response = Nokogiri::XML(html)
     # # url = 'https://en.wikipedia.org/wiki/Recursion_(computer_science)'
     # page = Nokogiri::HTML(open(url))
@@ -37,7 +37,8 @@ task :update_feed => :environment do
         ]
       }
       
-      sg = SendGrid::API.new(api_key: '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')
+      key = ENV["API_KEY"]
+      sg = SendGrid::API.new(api_key: key)
       response = sg.client.mail._("send").post(request_body: data)
       puts response.status_code
       puts response.body
